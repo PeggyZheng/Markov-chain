@@ -8,36 +8,32 @@ def make_chains(corpus):
     source_text = []
     concat_list = []
 
-#    for line in file_object:
-#        new_line = line.rstrip().split("|")
-#        houses.add(new_line[2])
-
     for line in original_text:
         split_text = line.rstrip().split(" ")
         source_text.append(split_text)
-    
+    i = 0
     for item in source_text:
-        i = 0
+        
         concat_list = concat_list + source_text[i]
         i += 1
-    print concat_list
+   
 
+    bi_gram_dictionary = {}
+    index = 0
+    while index < (len(concat_list) - 2):
+        word_pair = (concat_list[index], concat_list[index + 1])
+        bi_gram_dictionary[word_pair] = concat_list[i + 2]
+        index += 1
 
-    # bi-gram_dictionary = {}
-    # for word_pair in source_text:
-
-    #     loop through text two words at a time
-    #     create bi-gram keys
-    
+    print bi_gram_dictionary
     # for tri-grams in source_text:
     #     i = 0
     #     create values that are sets of single words that follow established bi-grams
     #     word by word, index by index
     #     i += 0
 
-    # return dictionary
 
-    # close(corpus)
+    original_text.close()
 
 make_chains("green-eggs.txt")
 

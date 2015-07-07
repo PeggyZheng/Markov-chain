@@ -37,10 +37,13 @@ def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
     random_string = ""
     starting_point = random.choice(chains.keys())
-    random_string = random_string + starting_point[0] + " " + starting_point[1]
+    random_string = random_string + starting_point[0].title() + " " + starting_point[1]
     pair = starting_point
+    ending_punctuation = ["!", "?", "."]
 
-    while pair in chains.keys():
+    while random_string[-1] not in ending_punctuation:
+    #!= "!" and random_string[-1] != "." and random_string[-1] \
+    #    != "?":
         value_list = chains[pair]
         random_word = random.choice(value_list)
         random_string = random_string + " " + random_word

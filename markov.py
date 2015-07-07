@@ -1,4 +1,5 @@
 import sys
+import random
 
 
 def make_chains(corpus):
@@ -33,9 +34,26 @@ def make_chains(corpus):
 
 def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
+    random_string = ""
+    starting_point = random.choice(chains.keys())
+    print starting_point
+    print str(starting_point) + " a word"
+    random_string = random_string + starting_point[0] + " " + starting_point[1]
+    print random_string
+    pair = (random_string[-2], random_string[-1])
+    print pair
+
+    while pair in chains.keys():
+        find key with last word in string in item
+        add key value to random_string
+        pair = (random_string[-2], random_string[-1])
+
+
 
     return "Here's some random text."
 
+a = make_chains("green-eggs.txt")
+make_text(a)
 
 # Change this to read input_text from a file, deciding which file should
 # be used by examining the `sys.argv` arguments (if neccessary, see the

@@ -16,13 +16,19 @@ def make_chains(corpus):
         
         concat_list = concat_list + source_text[i]
         i += 1
-   
 
     bi_gram_dictionary = {}
     index = 0
     while index < (len(concat_list) - 2):
+
         word_pair = (concat_list[index], concat_list[index + 1])
-        bi_gram_dictionary[word_pair] = concat_list[i + 2]
+        #print word_pair
+        if word_pair in bi_gram_dictionary:      
+            bi_gram_dictionary[word_pair].append(concat_list[i + 2])
+            #print bi_gram_dictionary[word_pair]
+        else:
+            bi_gram_dictionary[word_pair] = [concat_list[i + 2]]
+            #print word_pair
         index += 1
 
     print bi_gram_dictionary
